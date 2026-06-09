@@ -5,6 +5,7 @@ on:
     - cron: "0 */6 * * *"
   push:
     branches: [main]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -16,7 +17,9 @@ jobs:
       - uses: Platane/snk@v3
         with:
           github_user_name: 0xC1ph3rX
-          outputs: snake.svg
+          outputs: |
+            dist/snake.svg?color_snake=#00FF41&color_dots=#0a2a0a,#0d3d0d,#1a6e1a,#2ea82e,#00FF41
+      - run: mv dist/snake.svg snake.svg
       - uses: stefanzweifel/git-auto-commit-action@v5
         with:
           commit_message: "chore: update snake.svg"
