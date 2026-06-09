@@ -17,7 +17,9 @@ jobs:
       - uses: Platane/snk@v3.5.0
         with:
           github_user_name: 0xC1ph3rX
-          outputs: snake.svg?color_snake=%2300FF41&color_dots=%230a0a0a,%23001a00,%23003300,%23006600,%2300FF41
+          github_token: ${{ github.token }}
+          outputs: |
+            snake.svg?color_snake=#00FF41&color_dots=#0a0a0a,#001a00,#003300,#006600,#00FF41
       - uses: stefanzweifel/git-auto-commit-action@v7
         with:
           commit_message: "chore: update snake.svg"
